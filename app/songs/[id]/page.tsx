@@ -1,4 +1,3 @@
-import xml2js from "xml2js";
 import { useRouter } from "next/navigation";
 
 import { RadioGroup } from "@headlessui/react";
@@ -63,16 +62,7 @@ export default async function NotePage({ params }: any) {
 
   const xml: string = song_details.verses;
 
-  xml2js.parseString(xml, function (err: any, result: any) {
-    if (err) {
-      console.log(err);
-    } else {
-      const songTitle = result.song.$.version;
-      const lyrics = result.song.lyrics[0].verse;
-      jsx = lyrics;
-    }
-  });
-
+  
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
@@ -111,18 +101,7 @@ export default async function NotePage({ params }: any) {
             </div>
           </section>
           <section>
-            <div className="mt-6  text-gray-500 text-xl">
-              {jsx.map((verse: string) => {
-                // replace \n with <br />
-                const v = verse?._.replace("\n", "<br />");
-                return (
-                  <div
-                    className="mb-8"
-                    dangerouslySetInnerHTML={{ __html: v }}
-                  ></div>
-                );
-              })}
-            </div>
+            <p>some text</p>
           </section>
         </div>
 

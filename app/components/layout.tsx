@@ -134,7 +134,7 @@ export default function Layout({children}: any) {
             </li>
             <li className='text-xs text-center text-gray-500'>
               <Link className='m-5' href={'/terms'} passHref>
-                Terms and Conditions
+                Terms
               </Link>
               <Link className='m-5' href={'/privacy'} passHref>
                 Privacy
