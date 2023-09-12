@@ -1,6 +1,6 @@
-'use client'
-import { Fragment, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+"use client";
+import { Fragment, useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
   CalendarIcon,
@@ -8,27 +8,33 @@ import {
   HomeIcon,
   PlusIcon,
   XMarkIcon,
-  MusicalNoteIcon, 
-  Cog6ToothIcon
-} from '@heroicons/react/24/outline'
-import Event from '../event'
-import Link from 'next/link'
+  MusicalNoteIcon,
+  Cog6ToothIcon,
+} from "@heroicons/react/24/outline";
+import Event from "../event";
+import Link from "next/link";
+import Image from "next/image";
 
 const navigation = [
-  { name: 'Начало', href: '/', icon: HomeIcon, current: true },
-  { name: 'Събития', href: '/events', icon: CalendarIcon, current: false },
-  { name: 'Добави събитие', href: '/create', icon: PlusIcon, current: false },
-  { name: 'Песни', href: '/songs', icon: MusicalNoteIcon, current: false },
-  { name: 'Професионалисти', href: '/professionals', icon: UsersIcon, current: false },
-  { name: 'Ресурси', href: '/resources', icon: UsersIcon, current: false },
-]
+  { name: "Начало", href: "/", icon: HomeIcon, current: true },
+  { name: "Събития", href: "/events", icon: CalendarIcon, current: false },
+  { name: "Добави събитие", href: "/create", icon: PlusIcon, current: false },
+  { name: "Песни", href: "/songs", icon: MusicalNoteIcon, current: false },
+  {
+    name: "Професионалисти",
+    href: "/professionals",
+    icon: UsersIcon,
+    current: false,
+  },
+  { name: "Ресурси", href: "/resources", icon: UsersIcon, current: false },
+];
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
-export default function Layout({children}: any) {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+export default function Layout({ children }: any) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <>
@@ -42,7 +48,11 @@ export default function Layout({children}: any) {
       */}
       <div>
         <Transition.Root show={sidebarOpen} as={Fragment}>
-          <Dialog as="div" className="relative z-50 lg:hidden" onClose={setSidebarOpen}>
+          <Dialog
+            as="div"
+            className="relative z-50 lg:hidden"
+            onClose={setSidebarOpen}
+          >
             <Transition.Child
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
@@ -76,20 +86,31 @@ export default function Layout({children}: any) {
                     leaveTo="opacity-0"
                   >
                     <div className="absolute left-full top-0 flex w-16 justify-center pt-5">
-                      <button type="button" className="-m-2.5 p-2.5" onClick={() => setSidebarOpen(false)}>
+                      <button
+                        type="button"
+                        className="-m-2.5 p-2.5"
+                        onClick={() => setSidebarOpen(false)}
+                      >
                         <span className="sr-only">Close sidebar</span>
-                        <XMarkIcon className="h-6 w-6 text-white" aria-hidden="true" />
+                        <XMarkIcon
+                          className="h-6 w-6 text-white"
+                          aria-hidden="true"
+                        />
                       </button>
                     </div>
                   </Transition.Child>
                   {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-2">
                     <div className="flex h-16 shrink-0 items-center">
-                      <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=blue&shade=600"
-                        alt="Your Company"
+                      <Image
+                        src="/notes-logo.svg"
+                        width={50}
+                        height={50}
+                        alt="logo"
                       />
+                      <div className="pl-4 text-3xl font-semibold text-zinc-600">
+                        Church Info
+                      </div>
                     </div>
                     <nav className="flex flex-1 flex-col">
                       <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -101,15 +122,17 @@ export default function Layout({children}: any) {
                                   href={item.href}
                                   className={classNames(
                                     item.current
-                                      ? 'bg-gray-50 text-blue-600'
-                                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50',
-                                    'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
+                                      ? "bg-gray-50 text-cyan-600"
+                                      : "text-gray-700 hover:text-cyan-600 hover:bg-gray-50",
+                                    "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                                   )}
                                 >
                                   <item.icon
                                     className={classNames(
-                                      item.current ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600',
-                                      'h-6 w-6 shrink-0'
+                                      item.current
+                                        ? "text-cyan-600"
+                                        : "text-gray-400 group-hover:text-cyan-600",
+                                      "h-6 w-6 shrink-0"
                                     )}
                                     aria-hidden="true"
                                   />
@@ -119,33 +142,36 @@ export default function Layout({children}: any) {
                             ))}
                           </ul>
                         </li>
-                        <li className='mt-auto'>
-              <Link
-                href='/settings'
-                className='group -mx-2 flex gap-x-4 rounded-md p-2 text-lg font-medium leading-6 text-gray-700 hover:bg-gray-50 hover:text-green-600'
-                passHref
-              >
-                <Cog6ToothIcon
-                  className='h-6 w-6 shrink-0 text-gray-400 group-hover:text-green-600'
-                  aria-hidden='true'
-                />
-                Settings
-              </Link>
-            </li>
-            <li className='text-xs text-center text-gray-500'>
-              <Link className='m-5' href={'/terms'} passHref>
-                Terms
-              </Link>
-              <Link className='m-5' href={'/privacy'} passHref>
-                Privacy
-              </Link>
-              <Link className='m-5' href={'/cookie'} passHref>
-                Cookie
-              </Link>
-            </li>
-            <li className='text-xs text-center pb-5 text-gray-500'>
-              <span>&copy; {new Date().getFullYear()} Church information . All rights reserved.</span>
-            </li>
+                        <li className="mt-auto">
+                          <Link
+                            href="/settings"
+                            className="group -mx-2 flex gap-x-4 rounded-md p-2 text-lg font-medium leading-6 text-gray-700 hover:bg-gray-50 hover:text-cyan-600"
+                            passHref
+                          >
+                            <Cog6ToothIcon
+                              className="h-6 w-6 shrink-0 text-gray-400 group-hover:text-cyan-600"
+                              aria-hidden="true"
+                            />
+                            Settings
+                          </Link>
+                        </li>
+                        <li className="text-xs text-center text-gray-500">
+                          <Link className="m-5" href={"/terms"} passHref>
+                            Terms
+                          </Link>
+                          <Link className="m-5" href={"/privacy"} passHref>
+                            Privacy
+                          </Link>
+                          <Link className="m-5" href={"/cookie"} passHref>
+                            Cookie
+                          </Link>
+                        </li>
+                        <li className="text-xs text-center pb-5 text-gray-500">
+                          <span>
+                            &copy; {new Date().getFullYear()} Church information
+                            . All rights reserved.
+                          </span>
+                        </li>
                       </ul>
                     </nav>
                   </div>
@@ -160,11 +186,10 @@ export default function Layout({children}: any) {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
             <div className="flex h-16 shrink-0 items-center">
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=blue&shade=600"
-                alt="Your Company"
-              />
+              <Image src="/notes-logo.svg" width={50} height={50} alt="logo" />
+              <div className="pl-4 text-3xl font-semibold text-zinc-600">
+                Church Info
+              </div>
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -176,26 +201,27 @@ export default function Layout({children}: any) {
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? 'bg-gray-50 text-blue-600'
-                              : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50',
-                            'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold'
+                              ? "bg-gray-50 text-cyan-600"
+                              : "text-gray-700 hover:text-cyan-600 hover:bg-gray-50",
+                            "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                           )}
                         >
                           <item.icon
                             className={classNames(
-                              item.current ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600',
-                              'h-6 w-6 shrink-0'
+                              item.current
+                                ? "text-cyan-600"
+                                : "text-gray-400 group-hover:text-cyan-600",
+                              "h-6 w-6 shrink-0"
                             )}
                             aria-hidden="true"
                           />
                           {item.name}
                         </a>
                       </li>
-                      
                     ))}
                   </ul>
                 </li>
-              
+
                 {/* <li className="-mx-6 mt-auto">
                   <a
                     href="#"
@@ -211,47 +237,56 @@ export default function Layout({children}: any) {
                   </a>
                 </li> */}
 
-<li className='mt-auto'>
-              <Link
-                href='/settings'
-                className='group -mx-2 flex gap-x-4 rounded-md p-2 text-lg font-medium leading-6 text-gray-700 hover:bg-gray-50 hover:text-green-600'
-                passHref
-              >
-                <Cog6ToothIcon
-                  className='h-6 w-6 shrink-0 text-gray-400 group-hover:text-green-600'
-                  aria-hidden='true'
-                />
-                Settings
-              </Link>
-            </li>
-            <li className='text-xs text-center text-gray-500'>
-              <Link className='m-5' href={'/terms'} passHref>
-                Terms
-              </Link>
-              <Link className='m-5' href={'/privacy'} passHref>
-                Privacy
-              </Link>
-              <Link className='m-5' href={'/cookie'} passHref>
-                Cookie
-              </Link>
-            </li>
-            <li className='text-xs text-center pb-5 text-gray-500'>
-              <span>&copy; {new Date().getFullYear()} Church information . All rights reserved.</span>
-            </li>
-
-
-
+                <li className="mt-auto">
+                  <Link
+                    href="/settings"
+                    className="group -mx-2 flex gap-x-4 rounded-md p-2 text-lg font-medium leading-6 text-white hover:bg-gray-50 hover:text-cyan-600"
+                    passHref
+                  >
+                    <Cog6ToothIcon
+                      className="h-6 w-6 shrink-0 text-white group-hover:text-cyan-600"
+                      aria-hidden="true"
+                    />
+                    Settings
+                  </Link>
+                </li>
+                <li className="text-xs text-center text-gray-500">
+                  <Link className="m-5" href={"/terms"} passHref>
+                    Terms
+                  </Link>
+                  <Link className="m-5" href={"/privacy"} passHref>
+                    Privacy
+                  </Link>
+                  <Link className="m-5" href={"/cookie"} passHref>
+                    Cookie
+                  </Link>
+                </li>
+                <li className="text-xs text-center pb-5 text-gray-500">
+                  <span>
+                    &copy; {new Date().getFullYear()} Church information . All
+                    rights reserved.
+                  </span>
+                </li>
               </ul>
             </nav>
           </div>
         </div>
 
         <div className="sticky top-0 z-40 flex items-center gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden">
-          <button type="button" className="-m-2.5 p-2.5 text-gray-700 lg:hidden" onClick={() => setSidebarOpen(true)}>
+          <button
+            type="button"
+            className="-m-2.5 p-2.5 text-gray-700 lg:hidden"
+            onClick={() => setSidebarOpen(true)}
+          >
             <span className="sr-only">Open sidebar</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
-          <div className="flex-1 text-sm font-semibold leading-6 text-gray-900">Dashboard</div>
+          <div className="flex-1 text-sm font-semibold leading-6 text-gray-900">
+            
+            <div className='pl-4 text-2xl font-semibold text-zinc-600'>Church Information</div>
+
+
+          </div>
           {/* <a href="#">
             <span className="sr-only">Your profile</span>
             <img
@@ -265,20 +300,18 @@ export default function Layout({children}: any) {
         <main className="lg:pl-72">
           <div className="xl:pr-96">
             <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-6">
-              
-              
               {/* Main area */}
 
-
-           {children}
+              {children}
             </div>
           </div>
         </main>
 
         <aside className="fixed inset-y-0 right-0 hidden w-96 overflow-y-auto border-l border-gray-200 px-4 py-6 sm:px-6 lg:px-8 xl:block">
-          {/* Secondary column (hidden on smaller screens) */} <p>right sidebar</p>
+          {/* Secondary column (hidden on smaller screens) */}{" "}
+          <p>right sidebar</p>
         </aside>
       </div>
     </>
-  )
+  );
 }

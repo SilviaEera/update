@@ -31,7 +31,7 @@ const product = {
 
 async function getNote(noteId: string) {
   const res = await fetch(
-    `https://notes-hub.fly.dev/api/collections/notes/records/${noteId}`,
+    `https://notes-hub.fly.dev/api/collections/events/records/${noteId}`,
     {
       next: { revalidate: 10 },
     }

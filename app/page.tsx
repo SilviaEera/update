@@ -14,7 +14,7 @@ async function getNotes() {
   // const db = new PocketBase('http://127.0.0.1:8090');
   // const result = await db.records.getList('notes');
   const res = await fetch(
-    "https://notes-hub.fly.dev/api/collections/notes/records?page=1&perPage=30",
+    "https://notes-hub.fly.dev/api/collections/events/records?page=1&perPage=30",
     { cache: "no-store" }
   );
   const data = await res.json();
@@ -42,15 +42,18 @@ function Note({ note }: any) {
   return (
     <Link href={`/${id}`}>
       <div className="sm:flex p-8">
-        <div className="mb-4 flex-shrink-0 sm:mb-0 sm:mr-4">
+        <div  style={{ position: 'relative', width: '150px', height: '100px' }}>
           <Image
-            className="h-32 w-fullsm:w-32"
+
             src={`https://notes-hub.fly.dev/api/files/bo9f4kjgkhcv4ch/${id}/${image}`}
-            width={100}
-            height={100}
+            sizes="150px"
+            fill
+            style={{
+              objectFit: 'contain',
+            }}
             alt={title} />
         </div>
-        <div>
+        <div className="pl-6">
           <h4 className="text-lg font-bold">{title}</h4>
           <p className="mt-1">{content}</p>
           <p className="mt-1">{created}</p>

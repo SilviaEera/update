@@ -1,44 +1,11 @@
-import { useRouter } from "next/navigation";
 
-import { RadioGroup } from "@headlessui/react";
 import {
-  PaperClipIcon,
-  CheckIcon,
-  QuestionMarkCircleIcon,
   StarIcon,
   ShieldCheckIcon,
-  UserIcon,
 } from "@heroicons/react/20/solid";
 import Image from "next/image";
-import { title } from "process";
-
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { pb } from "@/lib/pb";
 
-const product = {
-  name: "Everyday Ruck Snack",
-  href: "#",
-  price: "$220",
-  description:
-    "Don't compromise on snack-carrying capacity with this lightweight and spacious bag. The drawstring top keeps all your favorite chips, crisps, fries, biscuits, crackers, and cookies secure.",
-  imageSrc:
-    "https://tailwindui.com/Image/ecommerce-images/product-page-04-featured-product-shot.jpg",
-  imageAlt:
-    "Model wearing light green backpack with black canvas straps and front zipper pouch.",
-  breadcrumbs: [
-    { id: 1, name: "Travel", href: "#" },
-    { id: 2, name: "Bags", href: "#" },
-  ],
-  sizes: [
-    { name: "18L", description: "Perfect for a reasonable amount of snacks." },
-    { name: "20L", description: "Enough room for a serious amount of snacks." },
-  ],
-};
 
 async function getNote(noteId: string) {
   const res = await fetch(
@@ -89,7 +56,7 @@ export default async function NotePage({ params }: any) {
               <p className="ml-2 text-sm text-gray-500">{song.author}</p>
             </div>
             {/* Product image */}
-            <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
+            {/* <div className="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
               <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
                 <Image
                   width={150}
@@ -98,10 +65,10 @@ export default async function NotePage({ params }: any) {
                   alt={song.title}
                 />
               </div>
-            </div>
+            </div> */}
           </section>
           <section>
-            <p>some text</p>
+            <p>{song.verses}</p>
           </section>
         </div>
 
@@ -111,41 +78,6 @@ export default async function NotePage({ params }: any) {
             <h2 id="options-heading" className="sr-only">
               Product options
             </h2>
-
-            <form>
-              <div className="mt-4">
-                <a
-                  href="#"
-                  className="group inline-flex text-sm text-gray-500 hover:text-gray-700"
-                >
-                  /*{" "}
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger>Предложите подобрение</TooltipTrigger>
-                      <TooltipContent>
-                        <StarIcon />
-                        <p>
-                          Искате да предложите подобрение на тази страница?
-                          Натиснете тук.
-                        </p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>{" "}
-                  */
-                </a>
-              </div>
-              <div className="mt-6 text-center">
-                <a href="#" className="group inline-flex text-base font-medium">
-                  <ShieldCheckIcon
-                    className="mr-2 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                    aria-hidden="true"
-                  />
-                  <span className="text-gray-500 hover:text-gray-700">
-                    Lifetime Guarantee
-                  </span>
-                </a>
-              </div>
-            </form>
           </section>
         </div>
       </div>

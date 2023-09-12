@@ -52,7 +52,7 @@ function Note({ note }: any) {
         className="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-gray-50 sm:px-6"
       >
         <div className="flex min-w-0 gap-x-4">
-          <MusicalNoteIcon className="h-12 w-12 flex-none rounded-full bg-gray-50" />
+          <MusicalNoteIcon className="h-12 w-12 flex-none" />
           <div className="min-w-0 flex-auto">
             <p className="text-sm font-semibold leading-6 text-gray-900">
               <Link href={`/songs/${id}`}>
