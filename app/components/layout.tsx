@@ -17,16 +17,16 @@ import Image from "next/image";
 
 const navigation = [
   { name: "Начало", href: "/", icon: HomeIcon, current: true },
-  { name: "Събития", href: "/events", icon: CalendarIcon, current: false },
+  { name: "Събития", href: "/", icon: CalendarIcon, current: false },
   { name: "Добави събитие", href: "/create", icon: PlusIcon, current: false },
   { name: "Песни", href: "/songs", icon: MusicalNoteIcon, current: false },
-  {
-    name: "Професионалисти",
-    href: "/professionals",
-    icon: UsersIcon,
-    current: false,
-  },
-  { name: "Ресурси", href: "/resources", icon: UsersIcon, current: false },
+  // {
+  //   name: "Професионалисти",
+  //   href: "/professionals",
+  //   icon: UsersIcon,
+  //   current: false,
+  // },
+  // { name: "Ресурси", href: "/resources", icon: UsersIcon, current: false },
 ];
 
 function classNames(...classes: string[]) {
@@ -143,7 +143,7 @@ export default function Layout({ children }: any) {
                           </ul>
                         </li>
                         <li className="mt-auto">
-                          <Link
+                          {/* <Link
                             href="/settings"
                             className="group -mx-2 flex gap-x-4 rounded-md p-2 text-lg font-medium leading-6 text-gray-700 hover:bg-gray-50 hover:text-cyan-600"
                             passHref
@@ -153,7 +153,7 @@ export default function Layout({ children }: any) {
                               aria-hidden="true"
                             />
                             Settings
-                          </Link>
+                          </Link> */}
                         </li>
                         <li className="text-xs text-center text-gray-500">
                           <Link className="m-5" href={"/terms"} passHref>
@@ -238,7 +238,7 @@ export default function Layout({ children }: any) {
                 </li> */}
 
                 <li className="mt-auto">
-                  <Link
+                  {/* <Link
                     href="/settings"
                     className="group -mx-2 flex gap-x-4 rounded-md p-2 text-lg font-medium leading-6 text-white hover:bg-gray-50 hover:text-cyan-600"
                     passHref
@@ -248,7 +248,7 @@ export default function Layout({ children }: any) {
                       aria-hidden="true"
                     />
                     Settings
-                  </Link>
+                  </Link> */}
                 </li>
                 <li className="text-xs text-center text-gray-500">
                   <Link className="m-5" href={"/terms"} passHref>

@@ -26,7 +26,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <h1 className="p-12 text-center">Какви събития следват...  🤔</h1>
+      <h1 className="p-12 text-center">Какви събития следват... 🤔</h1>
       <div>
         {notes?.map((note) => {
           return <Note key={note.id} note={note} />;
@@ -42,16 +42,16 @@ function Note({ note }: any) {
   return (
     <Link href={`/${id}`}>
       <div className="sm:flex p-8">
-        <div  style={{ position: 'relative', width: '150px', height: '100px' }}>
+        <div style={{ position: "relative", width: "150px", height: "100px" }}>
           <Image
-
             src={`https://notes-hub.fly.dev/api/files/bo9f4kjgkhcv4ch/${id}/${image}`}
             sizes="150px"
             fill
             style={{
-              objectFit: 'contain',
+              objectFit: "contain",
             }}
-            alt={title} />
+            alt={title}
+          />
         </div>
         <div className="pl-6">
           <h4 className="text-lg font-bold">{title}</h4>
@@ -60,6 +60,5 @@ function Note({ note }: any) {
         </div>
       </div>
     </Link>
-    
   );
 }

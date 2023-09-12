@@ -17,7 +17,8 @@ async function getNotes() {
   // const db = new PocketBase('http://127.0.0.1:8090');
   // const result = await db.records.getList('notes');
   const res = await fetch(
-    "https://notes-hub.fly.dev/api/collections/songs/records?page=1&perPage=30",
+    // "https://notes-hub.fly.dev/api/collections/songs/records?page=1&perPage=30",
+    "https://notes-hub.fly.dev/api/collections/songs/records",
     { cache: "no-store" }
   );
   const data = await res.json();
